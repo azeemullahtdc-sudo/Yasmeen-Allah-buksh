@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yasmeen Allah Baksh | Personal Portfolio</title>
+<style>
+:root{
+ --site-primary:#c7f36b; --site-on-primary:#171914;
+ --site-secondary:#242624; --site-on-secondary:#f4f4ef;
+ --site-background:#111211; --site-on-background:#f4f4ef;
+ --site-font-body:Inter, "Segoe UI", Arial, sans-serif;
+ --site-font-heading:Inter, "Segoe UI", Arial, sans-serif;
+ --site-heading-scale:1; --site-spacing-scale:1; --site-radius-scale:1;
+ --site-decoration-opacity:1;
+ color-scheme:light dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:light-dark(#f7f7f3,#111211);color:light-dark(#181a17,#f4f4ef);font-family:var(--site-font-body);line-height:1.6}
+#app{background-color:light-dark(#f7f7f3,var(--site-background));color:light-dark(#181a17,var(--site-on-background));min-height:100vh;border-radius:0}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:light-dark(rgba(247,247,243,.92),rgba(17,18,17,.92));backdrop-filter:blur(14px);border-bottom:1px solid light-dark(#deded7,#30322f)}
+nav{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:20px}
+.brand{font-weight:850;letter-spacing:-.06em;font-size:1.15rem}
+.brand span{color:var(--site-primary)}
+.navlinks{display:flex;gap:25px;font-size:.88rem;color:light-dark(#50534c,#c2c5bc)}
+.navlinks a:hover{color:var(--site-primary)}
+.menu{display:none;background:none;color:inherit;border:1px solid #777;border-radius:8px;padding:7px 10px}
+.hero{padding:clamp(65px,10vw,130px) 0 90px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:var(--site-primary);filter:blur(130px);opacity:calc(var(--site-decoration-opacity)*.12);right:-100px;top:10px;pointer-events:none}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:750;color:light-dark(#62665c,#b5b9ad)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:60px}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(3.1rem,8vw,6.8rem);line-height:.92;letter-spacing:-.075em;margin:20px 0 25px;max-width:800px}
+h1 em{font-style:normal;color:var(--site-primary)}
+.lead{font-size:clamp(1.05rem,2vw,1.3rem);max-width:580px;color:light-dark(#555950,#c2c5bc)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;border:1px solid light-dark(#bfc1b7,#4a4d46);font-weight:750;font-size:.9rem;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--site-primary);color:var(--site-on-primary);border-color:var(--site-primary)}
+.portrait{min-height:420px;background:var(--site-secondary);border-radius:calc(24px * var(--site-radius-scale));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.portrait .monogram{font-size:clamp(7rem,15vw,12rem);font-weight:900;letter-spacing:-.12em;color:var(--site-primary);line-height:1}
+.portrait .portrait-note{position:absolute;bottom:20px;left:22px;color:#d9ded2;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.section{padding:90px 0;border-top:1px solid light-dark(#deded7,#30322f)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}
+.section-head h2{font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-.065em;line-height:1;margin-bottom:0}
+.section-head p{max-width:380px;color:light-dark(#62665c,#b5b9ad);margin-bottom:0}
+.about-grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:60px}
+.big-number{font-size:5rem;font-weight:900;letter-spacing:-.09em;color:var(--site-primary);line-height:1}
+.about-copy{font-size:clamp(1.2rem,2.4vw,1.8rem);letter-spacing:-.025em;max-width:780px}
+.muted{color:light-dark(#62665c,#b5b9ad)}
+.timeline{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.item,.skill,.contact-card{background:light-dark(#fff,#1c1e1c);border:1px solid light-dark(#e2e3dc,#333630);border-radius:calc(16px * var(--site-radius-scale));padding:25px}
+.item .year{font-size:.75rem;color:var(--site-primary);font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.item h3{font-size:1.15rem;margin:12px 0 5px}
+.item p{font-size:.92rem;color:light-dark(#62665c,#b5b9ad);margin-bottom:0}
+.exp{display:grid;grid-template-columns:150px 1fr;gap:40px;align-items:start}
+.exp-label{font-weight:800;color:var(--site-primary);text-transform:uppercase;font-size:.78rem;letter-spacing:.13em}
+.exp h3{font-size:1.6rem;letter-spacing:-.04em;margin-bottom:12px}
+.exp p{max-width:750px;color:light-dark(#62665c,#b5b9ad)}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.pill{border:1px solid light-dark(#d1d3c9,#454840);border-radius:999px;padding:9px 14px;font-size:.86rem}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.skill{font-weight:750;min-height:110px;display:flex;align-items:end;font-size:1.05rem;letter-spacing:-.02em}
+.skill:before{content:"↗";color:var(--site-primary);font-size:1.2rem;margin-right:10px}
+.language-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.language{padding:25px 0;border-bottom:1px solid light-dark(#d4d5cd,#3b3e38);font-size:1.5rem;font-weight:800;letter-spacing:-.04em}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px}
+.contact-grid h2{font-size:clamp(2.7rem,6vw,5rem);line-height:.98;letter-spacing:-.07em}
+.contact-info{display:grid;gap:16px;margin-top:30px}
+.contact-info small{display:block;color:light-dark(#777b70,#aeb2a7);text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;font-weight:800}
+.contact-info a,.contact-info span{overflow-wrap:anywhere}
+form{display:grid;gap:14px}
+label{font-size:.8rem;font-weight:750}
+input,textarea{width:100%;margin-top:6px;padding:13px 14px;border:1px solid light-dark(#d4d5cd,#42453f);border-radius:10px;background:light-dark(#fff,#1c1e1c);color:inherit;font:inherit}
+textarea{min-height:130px;resize:vertical}
+footer{padding:28px 0;border-top:1px solid light-dark(#deded7,#30322f);font-size:.83rem;color:light-dark(#62665c,#b5b9ad)}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.notice{font-size:.8rem;color:light-dark(#62665c,#b5b9ad);margin-top:12px}
+@media(max-width:760px){
+ .navlinks{display:none;position:absolute;top:75px;left:0;right:0;padding:20px;background:light-dark(#f7f7f3,#111211);border-bottom:1px solid #444;flex-direction:column;gap:16px}
+ .navlinks.open{display:flex}.menu{display:block}
+ .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:35px}
+ .hero{padding-top:65px}.portrait{min-height:280px}
+ .section{padding:65px 0}.section-head{display:block}.section-head p{margin-top:18px}
+ .timeline,.skills{grid-template-columns:1fr 1fr}.exp{grid-template-columns:1fr;gap:12px}
+}
+@media(max-width:470px){.wrap{width:min(100% - 28px,1120px)}.timeline,.skills,.language-grid{grid-template-columns:1fr}.item{padding:20px}.hero-grid{gap:25px}}
+</style>
+</head>
+<body>
+<div id="app">
+<header><nav class="wrap" aria-label="Main navigation">
+<a class="brand" href="#home">YASMEEN<span>.</span></a>
+<button class="menu" id="menu" aria-expanded="false" aria-controls="navlinks">Menu ☰</button>
+<div class="navlinks" id="navlinks">
+<a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+</div>
+</nav></header>
+<main>
+<section class="hero" id="home"><div class="wrap hero-grid">
+<div>
+<div class="eyebrow">Teacher · Urdu & Iqbaliyat</div>
+<h1>Yasmeen<br>Allah <em>Baksh.</em></h1>
+<p class="lead">Dedicated Teacher. Lifelong Learner. Passionate about education, student development, and creating a positive learning environment.</p>
+<div class="actions"><a class="btn primary" href="#about">About Me ↘</a><a class="btn" href="#contact">Contact Me ↗</a></div>
+</div>
+<div class="portrait" role="img" aria-label="Personal portrait placeholder for Yasmeen Allah Baksh">
+<div class="monogram">YA<span style="color:#f4f4ef">.</span></div><div class="portrait-note">Educator · Learner · Mentor</div>
+</div>
+</div></section>
+<section class="section" id="about"><div class="wrap">
+<div class="section-head"><h2>About me<span style="color:var(--site-primary)">.</span></h2><p>A little about my approach to teaching and learning.</p></div>
+<div class="about-grid"><div><div class="big-number">01</div><p class="muted">MY APPROACH</p></div><div class="about-copy">I am a dedicated and motivated teacher with a strong passion for guiding students and creating a positive learning environment. I believe in effective teaching, creative learning activities, and helping students achieve their academic and personal goals.</div></div>
+</div></section>
+<section class="section" id="education"><div class="wrap">
+<div class="section-head"><h2>Education<span style="color:var(--site-primary)">.</span></h2><p>My academic journey and qualifications.</p></div>
+<div class="timeline">
+<article class="item"><div class="year">2023 — 2025</div><h3>MA Urdu & Iqbaliyat</h3><p>The Islamia University of Bahawalpur</p><p>CGPA 2.58 / 4.00</p></article>
+<article class="item"><div class="year">2020 — 2022</div><h3>A.D.P.</h3><p>The Islamia University of Bahawalpur</p><p>458 / 800 marks</p></article>
+<article class="item"><div class="year">2017 — 2019</div><h3>Intermediate</h3><p>Government Girls High School, Dounga Bonga, Bahawalnagar</p><p>541 / 1100 marks</p></article>
+<article class="item"><div class="year">2015 — 2017</div><h3>Matriculation</h3><p>Government Girls High School, Dounga Bonga, Bahawalnagar</p><p>579 / 1100 marks</p></article>
+</div>
+</div></section>
+<section class="section" id="experience"><div class="wrap">
+<div class="section-head"><h2>Experience<span style="color:var(--site-primary)">.</span></h2><p>Supporting students through thoughtful teaching and guidance.</p></div>
+<div class="exp"><div class="exp-label">Teaching</div><div><h3>Teacher · Classroom Support</h3><p>I have approximately six months to one year of teaching experience, supporting students in academic learning and classroom activities. During this time, I developed communication, classroom management, and teamwork skills while helping students understand their lessons effectively.</p><div class="pills"><span class="pill">Student guidance</span><span class="pill">Classroom management</span><span class="pill">Academic support</span><span class="pill">Teamwork</span></div></div></div>
+</div></section>
+<section class="section" id="skills"><div class="wrap">
+<div class="section-head"><h2>My skills<span style="color:var(--site-primary)">.</span></h2><p>Practical strengths I bring to a learning environment.</p></div>
+<div class="skills"><div class="skill">Classroom & Behavior Management</div><div class="skill">Creative Activity-Based Teaching</div><div class="skill">Communication Skills</div><div class="skill">Quick Learner</div><div class="skill">Teamwork</div><div class="skill">Hardworking</div></div>
+<h3 style="margin:45px 0 8px">Languages</h3><div class="language-grid"><div class="language">Urdu ↗</div><div class="language">English ↗</div><div class="language">Punjabi ↗</div></div>
+</div></section>
+<section class="section" id="contact"><div class="wrap contact-grid">
+<div><div class="eyebrow">Have an opportunity?</div><h2>Let’s<br>connect<span style="color:var(--site-primary)">.</span></h2><p class="muted">I welcome opportunities to contribute to schools and educational institutions.</p>
+<div class="contact-info">
+<div><small>Phone</small><a href="tel:+923267235616">+92 326 7235616</a></div>
+<div><small>Email</small><a href="mailto:yasmeenallahbaksh@gmail.com">yasmeenallahbaksh@gmail.com</a></div>
+<div><small>Location</small><span>Dounga Bonga, District Bahawalnagar, Punjab, Pakistan</span></div>
+</div></div>
+<div class="contact-card"><form id="contactForm">
+<div><label for="name">Name</label><input id="name" name="name" required placeholder="Your name"></div>
+<div><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
+<div><label for="subject">Subject</label><input id="subject" name="subject" required placeholder="How can I help?"></div>
+<div><label for="message">Message</label><textarea id="message" name="message" required placeholder="Write your message..."></textarea></div>
+<button class="btn primary" type="submit">Prepare Email ↗</button>
+<p class="notice" id="formNotice">This form opens your email app with your message prepared; it does not send messages directly.</p>
+</form></div>
+</div></section>
+</main>
+<footer><div class="wrap foot"><span>© <span id="year"></span> Yasmeen Allah Baksh</span><span>Dedicated to learning, teaching, and making a positive difference.</span><span><a href="#home">Back to top ↑</a></span></div></footer>
+</div>
+<script>
+const menu=document.getElementById('menu'), nav=document.getElementById('navlinks');
+menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}));
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('contactForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const f=new FormData(e.currentTarget);
+ const subject=encodeURIComponent(f.get('subject'));
+ const body=encodeURIComponent(`Name: ${f.get('name')}\nEmail: ${f.get('email')}\n\n${f.get('message')}`);
+ window.location.href=`mailto:yasmeenallahbaksh@gmail.com?subject=${subject}&body=${body}`;
+});
+</script>
+</body>
+</html>
